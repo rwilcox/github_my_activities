@@ -18,8 +18,8 @@ module Helpers
 end
 
 def main
-  username = ENV["GITHUB_USERNAME"]
-  password = ENV["GITHUB_PASSWORD"]
+  username = ENV["GITHUB_USERNAME"] || `git config --global github.username`.strip
+  password = ENV["GITHUB_PASSWORD"] || `git config --global github.password`.strip
 
   raise "MUST set GITHUB_USERNAME environmental variable" unless username
   raise "MUST set GITHUB_PASSWORD environmental variable" unless password
